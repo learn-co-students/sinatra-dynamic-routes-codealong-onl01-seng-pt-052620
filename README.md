@@ -19,8 +19,8 @@ Would it make sense to hard-code hundreds of thousands of routes (
 `get '/property1'`, `get '/property2'`,`get '/property2356'`) in the controller
 to display each rental property? The controller would get messy and long very
 quickly. Instead, AirBnB (and Twitter, and Facebook, etc) use _dynamic routes_ -
-routes that are created based on attributes within the url of the request. In
-this code-along we'll learn why dynamic routes are powerful and how to integrate
+routes that are created based on attributes within the url of the request. 
+In this code-along we'll learn why dynamic routes are powerful and how to integrate
 them into a Sinatra project.
 
 To code along, fork and clone this lab. Run `bundle install` to make sure all of
@@ -33,12 +33,9 @@ periodically to make sure your code is behaving as expected.
 Open up `app.rb` in your text editor. You'll notice two routes, `get '/hello'`
 and `get '/hello/:name'`.
 
-The first route is familiar looking to us. It returns the string "hello world"
-in the browser when we go to the url. This is an example of static routing,
-which we've seen.
+The first route is familiar looking to us. It returns the string "hello world" in the browser when we go to the url. This is an example of static routing, which we've seen.
 
-But `get '/hello/:name'` is very different. What's with that `:` in front of
-`name`? This is an example of a `dynamic route`.
+But `get '/hello/:name'` is very different. What's with that `:` in front of `name`? This is an example of a `dynamic route`.
 
 Eventually we are going to need to capture data from the user. We need to know
 who they want to say hello to. There are a few ways to get this information, and
@@ -79,11 +76,14 @@ all_the_medicines = [
 
 Our application gets a request :`GET /medicines/1`. What happens here?
 
+
 The first thing Sinatra does is try to match the request to a specific
-controller action. The controller action it would match is as follows:
-`get '/medicines/:id'`. Once the request has been matched to the controller
-action, it then executes the code inside of the controller action block, as
-shown below:
+controller action. 
+
+The controller action it would match is as follows:  `get '/medicines/:id'` 
+
+Once the request has been matched to the controller action, 
+it then executes the code inside of the controller action block, as shown below:
 
 ```ruby
 # medicines_controller.rb
@@ -95,15 +95,15 @@ get '/medicines/:id' do
 end
 ```
 
-Let's run through this specific scenario. The HTTP request verb, `GET` matches
-the `get` method in our controller. The `/medicines` path in the HTTP request
-matches the `/medicines` path in our controller method. Finally, the `1`, which
-is an `id` parameter that's being passed into the path, matches the controller's
-expectation for an `id` parameter to be passed in place of `:id`.
+# Let's run through this specific scenario. 
+
+The HTTP request verb, `GET` matches the `get` method in our controller. 
+The `/medicines` path in the HTTP request matches the `/medicines` path in our controller method. 
+Finally, the `1`, which is an `id` parameter that's being passed into the path, matches the controller's expectation for an `id` parameter to be passed in place of `:id`.
 
 ### URL Params
 
-A URL parameter is a variable whose values are set dynamically in a page's URL,
+A `URL parameter` is a variable whose values are set dynamically in a page's URL,
 and can be accessed by its corresponding controller action. It's a very similar
 concept to a dynamic url.
 
@@ -113,7 +113,7 @@ a medicine object that has the `id` of 1. It seems to match this entry:
 The attributes from this object are assigned to the variable `@medicine`.
 
 Finally, the `@medicine` object is rendered via the `show.html.erb` template
-inside of the `views/medicines` directory.
+inside of the `views/medicines` directory. 
 
 Going back to our initial example, if you played around enough with the examples
 above, you'll notice that whatever name you typed in the url also appeared in
@@ -121,10 +121,9 @@ the browser, saying hello to that person. How were we able to get the text from
 the URL to the views?
 
 URL params help us get the text from the URL into the views. That `:name` in the
-route name is just a symbol that will be filled in with text later. The data is
-passed from the URL to the controller action through an automatically generated
-hash called `params`. Don't worry too much about how the hash is created. Just 
-know that inside your controller action, you automatically have access to this 
+route name is just a symbol that will be filled in with text later. 
+
+The data is passed from the URL to the controller action through an automatically generated hash called `params`. Don't worry too much about how the hash is created. Just know that inside your controller action, you automatically have access to this 
 hash through the variable `params`.
 
 To continue the medicine example, the hash looks something like this:
@@ -148,9 +147,12 @@ params[:id]
 ```
 
 You can receive multiple pieces of data through a dynamic route by separating
-the content with a forward slash. For example,
-`get '/addnumbers/:number1/:number2'` would give you a params hash with two
-key-value pairs (`number1` and `number2`).
+the content with a forward slash. 
+
+# Example 
+
+`get '/addnumbers/:number1/:number2'` 
+This would give you a params hash with two key-value pairs (`number1` and `number2`)
 
 ## Create your Own Dynamic Routes
 
