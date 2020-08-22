@@ -13,10 +13,15 @@ class App < Sinatra::Base
   get '/goodbye/:name' do
     @user_name = params[:name]
     "Goodbye, #{@user_name}."
+    
   end
 
   get "/multiply/:num1/:num2" do
-    "#{num1}, #{num2}"
+    @multiply = params[:num1].to_i * params[:num2].to_i 
+    "#{@multiply}"
   end
-
 end
+ #multiply_num.select do |multiply_num|
+        #multiply.num1.num2 ==
+        #have to use params for this one
+        #need to access the num1 & num2
